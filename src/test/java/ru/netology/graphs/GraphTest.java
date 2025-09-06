@@ -1,9 +1,7 @@
-package ru.netology.graphs.JUnit;
+package ru.netology.graphs;
 
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.*;
-import ru.netology.graphs.Graph;
-import ru.netology.graphs.Vertex;
 
 import static org.assertj.core.api.Assertions.*;
 

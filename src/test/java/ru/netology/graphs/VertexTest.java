@@ -1,7 +1,6 @@
-package ru.netology.graphs.JUnit;
+package ru.netology.graphs;
 
 import org.junit.jupiter.api.*;
-import ru.netology.graphs.Vertex;
 
 import java.util.List;
 import java.util.Objects;
