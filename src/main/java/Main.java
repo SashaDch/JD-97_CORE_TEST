@@ -1,31 +1,36 @@
 import ru.netology.graphs.DAG;
+import ru.netology.graphs.Graph;
 import ru.netology.graphs.Vertex;
 
 import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        DAG<String> flights = new DAG<>();
+    public static void main(String[] args) {
+        Graph<String> socialNetwork = new Graph<>(); // создание графа
 
-        Vertex<String> rome = flights.createVertex("Рим");
-        Vertex<String> paris = flights.createVertex("Париж");
-        Vertex<String> berlin = flights.createVertex("Берлин");
-        Vertex<String> london = flights.createVertex("Лондон");
-        Vertex<String> beijing = flights.createVertex("Пекин");
+        // создание вершин-страниц социальной сети
+        Vertex<String> petya = socialNetwork.createVertex("Петя");
+        Vertex<String> olya = socialNetwork.createVertex("Оля");
+        Vertex<String> dasha = socialNetwork.createVertex("Даша");
+        Vertex<String> katya = socialNetwork.createVertex("Катя");
 
-        flights.createEdge(rome, paris);
-        flights.createEdge(london, paris);
-        flights.createEdge(berlin, paris);
-        flights.createEdge(rome, berlin);
+        // создание рёбер - добавления в друзья
+        socialNetwork.createEdge(petya, olya);
+        socialNetwork.createEdge(olya, dasha);
+        socialNetwork.createEdge(dasha, petya);
+        socialNetwork.createEdge(dasha, katya);
 
-        flights.createEdge(paris, berlin);
-        flights.createEdge(berlin, beijing);
+        Vertex<String> pasha = socialNetwork.createVertex("Паша");
+        Vertex<String> kostya = socialNetwork.createVertex("Костя");
 
-        System.out.println(flights.path(london, paris)); // 1
-        System.out.println(flights.path(london, berlin)); // 2
-        System.out.println(flights.path(rome, beijing)); // 2
-        System.out.println(flights.path(rome, london)); // -1
+        socialNetwork.createEdge(pasha, kostya);
+
+        // поиск достижимости между анкетами
+        System.out.println(socialNetwork.isConnected(petya, olya)); // true
+        System.out.println(socialNetwork.isConnected(petya, katya)); // true
+        System.out.println(socialNetwork.isConnected(pasha, kostya)); // true
+        System.out.println(socialNetwork.isConnected(dasha, kostya)); // false
     }
 
 }
