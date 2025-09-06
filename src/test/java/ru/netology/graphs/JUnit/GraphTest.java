@@ -28,7 +28,7 @@ public class GraphTest {
 
     @BeforeEach
     void initTest() {
-        graph = new Graph<String>();
+        graph = new Graph<>();
         vertex1 = graph.createVertex("test1");
         vertex2 = graph.createVertex("test2");
         vertex3 = graph.createVertex("test3");
